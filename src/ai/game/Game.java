@@ -12,6 +12,8 @@ import ai.score.IScore;
  * @author trident
  */
 public interface Game {
+    
+    int MAX_SCORE_TURN=10;
     boolean processTurn();
     IScore getScore();
     
