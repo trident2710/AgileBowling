@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package agilebowling;
+package agilebowling.data;
 
 import agilebowling.utils.Tuple;
 import java.io.BufferedReader;
@@ -15,7 +15,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,10 +30,10 @@ public class DatabaseReader {
     
     private static  DatabaseReader instance = new DatabaseReader();
     
-    private Map<String,String> userData;
+    private Set<User> userData;
     
     private DatabaseReader(){
-        userData = new HashMap<>();
+        userData = new HashSet<>();
         
     }
     
@@ -47,7 +49,7 @@ public class DatabaseReader {
             String line   = r.readLine();
             while (line !=null) {                
                 String[] data = line.split(" ");
-                userData.put(data[0],data[1]);
+                userData.add(new User(data[0], data[1], Integer.parseInt(data[2]),Integer.parseInt(data[3])));
                 line = r.readLine();
             }
         } catch (Exception ex) {
@@ -61,13 +63,13 @@ public class DatabaseReader {
         }
     }
     
-    private void saveAll(){
+    public void saveAll(){
         PrintWriter r = null;
         try {
             File f = new File(DATABASE_PATH);
             r = new PrintWriter(new BufferedWriter(new FileWriter(f)));
-            for(Map.Entry<String,String> v: userData.entrySet()){
-                r.append(v.getKey()+" "+v.getValue());
+            for(User u: userData){
+                r.append(u.getUsername()+" "+u.getPassword()+" "+u.getGamesPlayed()+" "+u.getGamesWon()+"\n");
             }
             
         } catch (Exception ex) {
@@ -77,27 +79,29 @@ public class DatabaseReader {
         }
     }
     
-    public Map<String,String> getUsers(){
+    public Set<User> getUsers(){
         if(userData.isEmpty())
             readData();
         return userData;
     }
     
-    public void saveUser(String username, String password){
-        userData.put(username, password);
+    public void addUser(String username, String password){
+        userData.add(new User(username, password));
         saveAll();
     }
     
-    public Tuple<String,String> findByName(String username){
+    public User findByName(String username){
         if(userData.isEmpty())
             readData();
-        if(userData.containsKey(username))
-            return new Tuple<>(username,userData.get(username));
-        else return null;
+        for(User u: userData){
+            if(u.getUsername().equals(username))
+                return u;
+        }
+        return null;
     }
     
     public void deleteUser(String username){
-        userData.remove(username);
+        userData.remove(findByName(username));
         saveAll();
     }
 }

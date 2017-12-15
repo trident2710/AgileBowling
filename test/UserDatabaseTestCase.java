@@ -5,8 +5,7 @@
  */
 
 
-import agilebowling.tests.*;
-import agilebowling.DatabaseReader;
+import agilebowling.data.DatabaseReader;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -20,15 +19,15 @@ public class UserDatabaseTestCase extends TestCase{
     
     
     @Test
-    public void testSaveUser(){
-        DatabaseReader.getInstance().saveUser("testuser123", "pwduser123");
-        Assert.assertTrue(DatabaseReader.getInstance().findByName("testuser123").getKey().equals("testuser123"));
+    void testSaveUser(){
+        DatabaseReader.getInstance().addUser("testuser123", "pwduser123");
+        Assert.assertTrue(DatabaseReader.getInstance().findByName("testuser123")!=null);
         DatabaseReader.getInstance().deleteUser("testuser123");
     }
     
     @Test
-    public void testDeleteUser(){
-        DatabaseReader.getInstance().saveUser("testuser123", "pwduser123");
+    void testDeleteUser(){
+        DatabaseReader.getInstance().addUser("testuser123", "pwduser123");
         DatabaseReader.getInstance().deleteUser("testuser123");
         Assert.assertTrue(DatabaseReader.getInstance().findByName("testuser123")==null);
     }
