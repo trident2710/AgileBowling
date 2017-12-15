@@ -7,7 +7,8 @@ package ai.game;
 import ai.score.IScore;
 
 /**
- *
+ * defines the "Team" type of game where 2 teams are playing
+ * The winner is the team with the highest total score (sum of scores of participants)
  * @author souissi
  */
 public class TeamGame implements Game{

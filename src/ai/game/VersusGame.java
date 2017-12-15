@@ -9,7 +9,8 @@ import ai.game.Game;
 import ai.score.IScore;
 
 /**
- *
+ * defines the game of type versus where the human player is playing against one AI player
+ * The winner is the player with the highest score after the last turn
  * @author trident
  */
 public class VersusGame implements Game{

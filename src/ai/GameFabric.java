@@ -8,12 +8,17 @@ package ai;
 import ai.game.Game;
 import agilebowling.data.User;
 import ai.settings.GameDifficulty;
-import ai.settings.GameType;
 
 /**
- *
+ * abstract factory pattern for creating the different types of games
  * @author trident
  */
 public interface GameFabric {
+    /**
+     * create game of type "Versus"
+     * @param user
+     * @param difficulty
+     * @return VersusGame
+     */
     Game createVersusGame(User user, GameDifficulty difficulty);
 }

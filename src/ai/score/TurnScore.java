@@ -5,7 +5,8 @@
 package ai.score;
 
 /**
- *
+ * defines the score of the tournament game
+ * should represent the score of each participant of the tournament
  * @author souissi
  */
 public class TurnScore implements IScore{

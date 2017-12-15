@@ -8,6 +8,8 @@ import ai.score.IScore;
 
 /**
  *
+ * defines the game of type "Turnament"
+ * The winner is the player with the highest core after the last turn
  * @author souissi
  */
 public class TurnGame implements Game{

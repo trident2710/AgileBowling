@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  *
+ * simulates the player controlled by human
  * @author souissi
  */
 public class HumanPlayer implements IPlayer{

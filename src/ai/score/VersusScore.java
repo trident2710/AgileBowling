@@ -5,7 +5,8 @@
 package ai.score;
 
 /**
- *
+ * defines the score of the game of type "Versus"
+ * should represent the score of 2 players of this game
  * @author souissi
  */
 public class VersusScore implements IScore{

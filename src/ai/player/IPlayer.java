@@ -6,10 +6,14 @@
 package ai.player;
 
 /**
- *
+ * defines the abstraction of the bowling player
  * @author trident
  */
 public interface IPlayer {
+    /**
+     * simulates the the turn of this user
+     * @return how many points he has got <= @see Game.MAX_SCORE_TURN
+     */
     int lancer();
     
 }

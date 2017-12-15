@@ -6,10 +6,20 @@ package ai.score;
 
 /**
  *
+ * defines the abstraction for the score in the bowling game
  * @author souissi
  */
 public interface IScore {
+    /**
+     * 
+     * @return string that represents this score
+     */
     String afficherScore();
+    
+    /**
+     * defines if the player is already won in this game
+     * @return 
+     */
     boolean hasPlayerWon();
     
 }

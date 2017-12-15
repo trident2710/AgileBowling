@@ -5,7 +5,9 @@
 package ai.score;
 
 /**
- *
+ * defines the score of the team game
+ * should represent the scores of each player and the total score of 2 participant teams
+ * 
  * @author souissi
  */
 public class TeamScore implements IScore{

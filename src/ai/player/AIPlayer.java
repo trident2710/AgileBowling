@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  *
+ * simulates the player controlled by AI
  * @author souissi
  */
 public class AIPlayer implements IPlayer{

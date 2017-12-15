@@ -7,9 +7,10 @@ package ai.settings;
 
 /**
  *
+ * defines the difficulty of the computer 
  * @author trident
  */
 public enum GameDifficulty {
-    EASY,
-    HARD;
+    EASY, //the computer player will get small score
+    HARD; // the computer player will get higher score
 }
