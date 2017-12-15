@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ai;
+package ai.game;
+
+import ai.score.IScore;
 
 /**
  *
  * @author trident
  */
 public interface Game {
+    boolean processTurn();
+    IScore getScore();
+    
     
 }
