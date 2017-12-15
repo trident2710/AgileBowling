@@ -87,7 +87,9 @@ public class AgileBowling {
                                    System.out.println("Erreur!");
                                    return;       
                             }
+                            System.out.println("jeu commencé");
                             System.out.println(gf.createVersusGame(u, difficulty));
+                            System.out.println("jeu parti");
                             break;
                         case "2": 
                             System.out.println("En cours de construction !");
