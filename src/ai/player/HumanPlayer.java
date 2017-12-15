@@ -13,16 +13,24 @@ import java.util.Random;
  * @author souissi
  */
 public class HumanPlayer implements IPlayer{
+    
+    private String name;
     private Random r;
   
-    public HumanPlayer()
+    public HumanPlayer(String name)
     {
+        this.name = name;
         r=new Random();
     }
             
     @Override
     public int lancer() {
         return r.nextInt(1+Game.MAX_SCORE_TURN);           
+    }
+    
+    @Override
+    public String toString(){
+        return this.getClass().getSimpleName()+" with name "+name;
     }
     
 }

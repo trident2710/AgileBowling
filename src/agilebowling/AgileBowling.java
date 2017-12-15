@@ -5,6 +5,7 @@ import agilebowling.data.DatabaseReader;
 import agilebowling.data.User;
 import ai.GameFabric;
 import ai.GameFabricImpl;
+import ai.game.Game;
 import ai.settings.GameDifficulty;
 import ai.settings.GameType;
 import java.io.BufferedReader;
@@ -27,7 +28,8 @@ public class AgileBowling {
         GameFabric gf = new GameFabricImpl();
         GameDifficulty difficulty;
         GameType type;
-
+        Game currentGame;
+        
         System.out.println("Bonjour! Veuilllez connecter. Inserez votre login et mot de passe ou inserez nouveau pour s'enregistrer");
   
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -95,7 +97,14 @@ public class AgileBowling {
                             System.out.println("En cours de construction !");
                             break;
                         case "3": 
-                            System.out.println("En cours de construction !");
+                            System.out.println("jeu commencé");
+                            currentGame = gf.createTournamentGame(u,GameDifficulty.EASY, 10);
+                            boolean isFinished = false;
+                            while (!isFinished) {                                
+                                isFinished = currentGame.processTurn();
+                            }
+                            System.out.println("Jeu est fini avec le score final:\n");
+                            System.out.println(currentGame.getScore());
                             break;
                         default:
                             System.out.println("Erreur!");
