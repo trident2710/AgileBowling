@@ -41,7 +41,7 @@ public class TurnScore implements IScore{
     @Override
     public void updateForPlayer(IPlayer player, int newScore) {
         if(scores.containsKey(player))
-            scores.replace(player, scores.get(player)+newScore);
+            scores.put(player, scores.get(player)+newScore);
         else
            scores.put(player,newScore); 
     }

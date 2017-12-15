@@ -20,7 +20,7 @@ public class GameFabricImpl implements GameFabric{
 
     @Override
     public Game createVersusGame(User user, GameDifficulty difficulty) {
-        return new VersusGame();
+        return new VersusGame(new HumanPlayer(user.getUsername()),difficulty);
     }
 
     @Override

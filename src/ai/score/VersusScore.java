@@ -5,6 +5,8 @@
 package ai.score;
 
 import ai.player.IPlayer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * defines the score of the game of type "Versus"
@@ -12,20 +14,46 @@ import ai.player.IPlayer;
  * @author souissi
  */
 public class VersusScore implements IScore{
+    
+    private IPlayer player;
+    private Map<IPlayer,Integer> scores;
+    
+    public VersusScore(IPlayer player){
+        this.scores = new HashMap<>();
+        this.player = player;
+    }
 
     @Override
     public String afficherScore() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return toString();
     }
 
     @Override
     public boolean hasPlayerWon() {
-        throw new UnsupportedOperationException("Not supported yet.");
+      if(!scores.containsKey(player)) return false;
+      int max = 0;
+      for(Integer i:scores.values()){
+        if(i>max) max = i;
+      }
+      return scores.get(player)>max;
     }
 
     @Override
     public void updateForPlayer(IPlayer player, int newScore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(scores.containsKey(player))
+            scores.put(player, scores.get(player)+newScore);
+        else
+           scores.put(player,newScore); 
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Versus game score: \n");
+        for(Map.Entry<IPlayer,Integer> e: scores.entrySet()){
+            sb.append(e.getKey()).append(" ").append(e.getValue()).append(" points\n");
+        }
+        return sb.toString();
     }
     
 }

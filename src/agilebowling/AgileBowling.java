@@ -29,6 +29,7 @@ public class AgileBowling {
         GameDifficulty difficulty;
         GameType type;
         Game currentGame;
+        boolean isFinished = false;
         
         System.out.println("Bonjour! Veuilllez connecter. Inserez votre login et mot de passe ou inserez nouveau pour s'enregistrer");
   
@@ -90,8 +91,13 @@ public class AgileBowling {
                                    return;       
                             }
                             System.out.println("jeu commencé");
-                            System.out.println(gf.createVersusGame(u, difficulty));
-                            System.out.println("jeu parti");
+                            currentGame = gf.createVersusGame(u,difficulty);
+                            isFinished = false;
+                            while (!isFinished) {                                
+                                isFinished = currentGame.processTurn();
+                            }
+                            System.out.println("Jeu est fini avec le score final:\n");
+                            System.out.println(currentGame.getScore());
                             break;
                         case "2": 
                             System.out.println("En cours de construction !");
@@ -99,7 +105,7 @@ public class AgileBowling {
                         case "3": 
                             System.out.println("jeu commencé");
                             currentGame = gf.createTournamentGame(u,GameDifficulty.EASY, 10);
-                            boolean isFinished = false;
+                            isFinished = false;
                             while (!isFinished) {                                
                                 isFinished = currentGame.processTurn();
                             }
