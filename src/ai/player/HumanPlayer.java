@@ -4,15 +4,24 @@
  */
 package ai.player;
 
+import ai.game.Game;
+import java.util.Random;
+
 /**
  *
  * @author souissi
  */
 public class HumanPlayer implements IPlayer{
-
+    private Random r;
+  
+    public HumanPlayer()
+    {
+        r=new Random();
+    }
+            
     @Override
     public int lancer() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return r.nextInt(1+Game.MAX_SCORE_TURN);           
     }
     
 }
