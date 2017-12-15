@@ -7,9 +7,13 @@ package ai.game;
 import ai.player.AIPlayer;
 import ai.player.IPlayer;
 import ai.score.IScore;
+import ai.score.TurnScore;
 import ai.settings.GameDifficulty;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +27,8 @@ public class TurnGame implements Game{
     private Set<IPlayer> computers;
     private GameDifficulty difficulty;
     private int playersCount;
+    private IScore score;
+    private int currentTurn;
     
     public TurnGame(IPlayer player, int playersCount, GameDifficulty difficulty){
         this.player = player;
@@ -30,6 +36,8 @@ public class TurnGame implements Game{
         this.playersCount = playersCount;
         computers = new HashSet<>();
         generatePlayers(playersCount-1);
+        this.score = new TurnScore(player);
+        this.currentTurn = 0;
     }
     
     private void generatePlayers(int playersCount){
@@ -40,12 +48,33 @@ public class TurnGame implements Game{
 
     @Override
     public boolean processTurn() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(IPlayer pl: computers){
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException ex) {
+                
+            }
+            System.out.println("Processing turn of the player "+pl);
+            int val = pl.lancer();
+            System.out.println("He got "+val+ " points");
+            score.updateForPlayer(pl, val);
+        }
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException ex) {
+
+        }
+        System.out.println("Processing turn of the player "+player);
+        int val = player.lancer();
+        System.out.println("You got "+val+ " points");
+        score.updateForPlayer(player, val);
+        currentTurn++;
+        return !(currentTurn<Game.MAX_TURNS);
     }
 
     @Override
     public IScore getScore() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return score;
     }
     
 }

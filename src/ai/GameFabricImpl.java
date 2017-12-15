@@ -8,6 +8,8 @@ package ai;
 import ai.game.VersusGame;
 import ai.game.Game;
 import agilebowling.data.User;
+import ai.game.TurnGame;
+import ai.player.HumanPlayer;
 import ai.settings.GameDifficulty;
 
 /**
@@ -19,6 +21,11 @@ public class GameFabricImpl implements GameFabric{
     @Override
     public Game createVersusGame(User user, GameDifficulty difficulty) {
         return new VersusGame();
+    }
+
+    @Override
+    public Game createTournamentGame(User user, GameDifficulty difficulty, int tournSize) {
+        return new TurnGame(new HumanPlayer(user.getUsername()), tournSize, difficulty);
     }
     
 }

@@ -21,4 +21,13 @@ public interface GameFabric {
      * @return VersusGame
      */
     Game createVersusGame(User user, GameDifficulty difficulty);
+    
+    /**
+     * create the tournament with tournSize players including human
+     * @param user
+     * @param difficulty
+     * @param tournSize
+     * @return 
+     */
+    Game createTournamentGame(User user, GameDifficulty difficulty, int tournSize);
 }

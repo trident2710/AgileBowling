@@ -5,7 +5,6 @@
  */
 package ai.game;
 
-import ai.game.Game;
 import ai.score.IScore;
 
 /**

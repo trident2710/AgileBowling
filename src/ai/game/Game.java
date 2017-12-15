@@ -20,6 +20,11 @@ public interface Game {
     int MAX_SCORE_TURN=10;
     
     /**
+     * define the max number of turns of the bowling game
+     */
+    int MAX_TURNS=10;
+    
+    /**
      * process one turn of the game 
      * 
      * @return 
