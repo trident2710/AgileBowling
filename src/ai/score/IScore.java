@@ -17,7 +17,7 @@ public interface IScore {
     String afficherScore();
     
     /**
-     * defines if the player is already won in this game
+     * defines if the player has already won in this game
      * @return 
      */
     boolean hasPlayerWon();
