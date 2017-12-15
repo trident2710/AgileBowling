@@ -2,7 +2,7 @@
 import agilebowling.data.DatabaseReader;
 import ai.GameFabric;
 import ai.GameFabricImpl;
-import ai.VersusGame;
+import ai.game.VersusGame;
 import ai.settings.GameDifficulty;
 import junit.framework.Assert;
 import junit.framework.TestCase;

@@ -5,6 +5,7 @@
  */
 package ai;
 
+import ai.game.Game;
 import agilebowling.data.User;
 import ai.settings.GameDifficulty;
 import ai.settings.GameType;
