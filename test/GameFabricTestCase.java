@@ -2,6 +2,7 @@
 import agilebowling.data.DatabaseReader;
 import ai.GameFabric;
 import ai.GameFabricImpl;
+import ai.game.Game;
 import ai.game.VersusGame;
 import ai.settings.GameDifficulty;
 import junit.framework.Assert;
@@ -27,6 +28,15 @@ public class GameFabricTestCase extends TestCase{
     public void testVersus(){
         gf = new GameFabricImpl();
         Assert.assertTrue(gf.createVersusGame(null, GameDifficulty.EASY) instanceof VersusGame);
+    }
+    
+    @Test
+    public void assert10TurnsAtLeast(){
+        gf = new GameFabricImpl();
+        Game g = new VersusGame();
+        for(int i=0;i<10;i++) {            
+            Assert.assertTrue(!g.processTurn());
+        }
     }
     
 }
