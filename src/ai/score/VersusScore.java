@@ -4,6 +4,8 @@
  */
 package ai.score;
 
+import ai.player.IPlayer;
+
 /**
  * defines the score of the game of type "Versus"
  * should represent the score of 2 players of this game
@@ -19,6 +21,11 @@ public class VersusScore implements IScore{
     @Override
     public boolean hasPlayerWon() {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateForPlayer(IPlayer player, int newScore) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
